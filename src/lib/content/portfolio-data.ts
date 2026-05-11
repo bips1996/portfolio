@@ -34,7 +34,7 @@ export const socialLinks = {
   email: "mailto:samantaraybiplaba@gmail.com",
   github: "https://github.com/bips1996",
   linkedin: "https://www.linkedin.com/in/bips96/",
-  resume: "https://www.biplaba.me/resume.html",
+  resume: "https://drive.google.com/file/d/12Oio-7HGZuMarqoA30lOiYIMuYN4hjCY/view?usp=drive_link",
 };
 
 /** Logo + portrait — vendored under `public/images/` (copied from your previous site) */
