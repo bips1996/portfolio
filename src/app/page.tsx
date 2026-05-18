@@ -51,10 +51,10 @@ export default function Home() {
 
         <main
           id="main-content"
-          className="min-w-0 flex-1 border-l-0 bg-gradient-to-b from-background via-background to-muted/[0.08] py-8 backdrop-blur-[2px] transition-colors duration-500 sm:border-l sm:border-border/50 sm:bg-background/35 sm:py-12 sm:from-transparent sm:via-transparent sm:to-transparent lg:max-w-none lg:border-l-0 lg:bg-transparent lg:bg-none lg:py-[4.25rem] lg:pl-11 lg:pr-5 xl:pl-14 max-lg:pb-[calc(6.5rem+env(safe-area-inset-bottom,0px))]"
+          className="min-w-0 flex-1 border-l-0 bg-gradient-to-b from-background via-background to-secondary/15 py-8 backdrop-blur-[2px] transition-colors duration-500 sm:border-l sm:border-primary/15 sm:bg-card/25 sm:py-12 sm:from-transparent sm:via-transparent sm:to-transparent lg:max-w-none lg:border-l-0 lg:bg-transparent lg:bg-none lg:py-[4.25rem] lg:pl-11 lg:pr-5 xl:pl-14 max-lg:pb-[calc(6.5rem+env(safe-area-inset-bottom,0px))]"
         >
           <div
-            className="sticky top-0 z-20 -mx-4 mb-7 border-b border-border/60 bg-background/80 shadow-[0_8px_32px_-20px_rgba(0,0,0,0.45)] backdrop-blur-xl supports-[backdrop-filter]:bg-background/65 sm:-mx-7 sm:mb-9 sm:rounded-b-2xl sm:shadow-[0_12px_40px_-24px_rgba(0,0,0,0.4)] lg:hidden dark:border-border/50 dark:bg-background/72 dark:shadow-[0_12px_48px_-28px_rgba(0,0,0,0.65)] dark:supports-[backdrop-filter]:bg-background/55"
+            className="sticky top-0 z-20 -mx-4 mb-7 border-b border-border/60 bg-background/85 shadow-[0_8px_32px_-20px_rgba(0,0,0,0.35)] backdrop-blur-xl supports-[backdrop-filter]:bg-background/70 sm:-mx-7 sm:mb-9 sm:rounded-b-2xl sm:shadow-[0_12px_40px_-24px_rgba(0,0,0,0.32)] lg:hidden dark:border-primary/20 dark:bg-card/85 dark:shadow-[0_12px_48px_-28px_rgba(24,12,48,0.55)] dark:supports-[backdrop-filter]:bg-card/75"
           >
             <div className="px-4 pt-[max(0.625rem,env(safe-area-inset-top))] pb-3 sm:px-7">
               <div className="flex items-center justify-between gap-3">

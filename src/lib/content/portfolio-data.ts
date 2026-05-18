@@ -10,10 +10,13 @@ export interface ExperienceItem {
   stack: string[];
 }
 
+export type ProjectDiagramKind = "schema" | "workflow" | "ml-metrics";
+
 export interface ProjectEntry {
   title: string;
   description: string;
-  stack: string[];
+  stack?: string[];
+  diagram: ProjectDiagramKind;
   githubUrl?: string;
   liveUrl?: string;
 }
@@ -21,13 +24,16 @@ export interface ProjectEntry {
 export interface SkillCategory {
   title:
     | "Backend"
+    | "System Design"
     | "Frontend"
     | "Cloud"
     | "Databases"
     | "DevOps"
-    | "ML/MLOps"
+    | "AI/ML"
     | "Tools";
   items: string[];
+  /** Grid columns to span in Instruments roadmap (default 1). */
+  colSpan?: 1 | 2;
 }
 
 export const socialLinks = {
@@ -65,7 +71,7 @@ export const folioMeta = {
 
 export const profileMeta = {
   location: "Hyderabad, India",
-  stackFocus: "Backend · Platform · TypeScript / Java",
+  stackFocus: "Backend · Platform · Java / TypeScript / Python",
   availability: "Open to senior & staff engineer roles",
 };
 
@@ -93,7 +99,7 @@ export const experiences: ExperienceItem[] = [
     stack: ["Java", "Spring Boot", "AWS", "Elasticsearch", "DBMS", "Project Management"],
   },
   {
-    role: "Software Engineer - II",
+    role: "Software Engineer - III",
     company: "Newton Classroom",
     period: "2022 — 2025",
     location: "Hyderabad, India",
@@ -114,35 +120,53 @@ export const experiences: ExperienceItem[] = [
 
 export const projects: ProjectEntry[] = [
   {
-    title: "PrepEasy (InterviewDock)",
-    description:
-      "Full-stack interview prep platform: browse and filter questions by technology and difficulty, with a documented Express API, PostgreSQL schema, and deployment guides for EC2, Vercel, and Netlify.",
-    stack: ["React", "TypeScript", "Node.js", "Express", "PostgreSQL", "Docker"],
-    githubUrl: "https://github.com/bips1996/InterviewDock",
-  },
-  {
     title: "AskBiplaba",
     description:
       "Spring Boot service for ingesting profile intelligence—PDF extraction, GitHub API integration, LinkedIn JSON mapping, and portfolio parsing behind a small set of REST endpoints.",
-    stack: ["Java 17", "Spring Boot", "PostgreSQL", "WebFlux", "JPA", "JSoup"],
+    // stack: ["Java 17", "Spring Boot", "PostgreSQL", "WebFlux", "JPA", "JSoup"],
+    diagram: "workflow",
     githubUrl: "https://github.com/bips1996/AskBiplaba",
+  },
+  {
+    title: "PrepEasy (InterviewDock)",
+    description:
+      "Full-stack interview prep platform: browse and filter questions by technology and difficulty, with a documented Express API, PostgreSQL schema, and deployment guides for EC2, Vercel, and Netlify.",
+    // stack: ["React", "TypeScript", "Node.js", "Express", "PostgreSQL", "Docker"],
+    diagram: "schema",
+    githubUrl: "https://github.com/bips1996/InterviewDock",
+    // liveUrl: "https://interview-dock.biplaba.me/",
   },
   {
     title: "Classification model analysis",
     description:
       "End-to-end comparison of six classifiers on the UCI Bank Marketing dataset, with metrics-driven writeups and a Streamlit app for interactive exploration.",
-    stack: ["Python", "Streamlit", "XGBoost", "scikit-learn", "Pandas"],
+    // stack: ["Python", "Streamlit", "XGBoost", "scikit-learn", "Pandas"],
+    diagram: "ml-metrics",
     githubUrl: "https://github.com/bips1996/classification-model-analysis",
     liveUrl: "https://2025aa05343.streamlit.app/",
   },
 ];
 
 export const skills: SkillCategory[] = [
-  { title: "Backend", items: ["Java", "Spring Boot", "Node.js", "TypeScript", "FastAPI"] },
-  { title: "Frontend", items: ["React", "Next.js", "Tailwind CSS", "HTML", "CSS"] },
+  
+  {
+    title: "System Design",
+    colSpan: 2,
+    items: [
+      "Microservices",
+      "API Design",
+      "Event-Driven Architecture",
+      "Database Design",
+      "Caching",
+      "Rate Limiting",
+      "Security",
+    ],
+  },
+  { title: "Backend", items: ["Spring Boot", "Node.js", "GraphQL", "FastAPI"] },
+  { title: "Frontend", items: ["React", "Next.js"] },
+  { title: "Databases", colSpan: 2, items: ["PostgreSQL", "MongoDB", "SQLite", "Elasticsearch", "Redis"] },
   { title: "Cloud", items: ["AWS", "GCP"] },
-  { title: "Databases", items: ["PostgreSQL", "MongoDB", "SQLite"] },
   { title: "DevOps", items: ["Docker", "Kubernetes", "CircleCI", "Nginx", "Linux"] },
-  { title: "ML/MLOps", items: ["MLflow", "Model evaluation", "Classification workflows"] },
-  { title: "Tools", items: ["Git", "Maven", "Vite", "TypeORM", "Elasticsearch"] },
+  { title: "AI/ML", items: ["Agentic AI", "Generative AI", "LLMs", "RAG", "Vector Databases"] },
+  // { title: "Tools", items: ["Git", "Maven", "Vite", "TypeORM", "Elasticsearch"] },
 ];

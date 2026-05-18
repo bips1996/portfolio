@@ -11,9 +11,9 @@ export function SiteBackdrop() {
       <div className="ambient-orb ambient-orb-a" />
       <div className="ambient-orb ambient-orb-b" />
       <div className="ambient-orb ambient-orb-c hidden sm:block" />
-      <div className="absolute inset-0 bg-grid-fine opacity-[0.35]" />
-      <div className="absolute inset-0 folio-hatch opacity-[0.45]" />
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background transition-colors duration-700" />
+      <div className="absolute inset-0 bg-grid-fine opacity-[0.35] dark:opacity-[0.42]" />
+      <div className="absolute inset-0 folio-hatch opacity-[0.45] dark:opacity-[0.28]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/80 transition-colors duration-700 dark:to-background/60" />
     </div>
   );
 }
