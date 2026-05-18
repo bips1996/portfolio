@@ -21,7 +21,7 @@ export function LeftRail({ activeSection, onNavigate }: LeftRailProps) {
       <div className="flex min-h-0 flex-1 flex-col px-0.5">
         <a
           href="#hero"
-          className="group block rounded-2xl border border-border/70 bg-muted/[0.18] p-4 transition-colors duration-300 hover:border-primary/28 hover:bg-muted/30"
+          className="hover-brand-card group block rounded-2xl border border-border/70 bg-muted/[0.18] p-4 transition-colors duration-300 hover:border-primary/35 hover:bg-muted/30"
           onClick={(e) => {
             e.preventDefault();
             onNavigate("hero");
@@ -61,16 +61,16 @@ export function LeftRail({ activeSection, onNavigate }: LeftRailProps) {
                 aria-current={isActive ? "location" : undefined}
                 onClick={() => onNavigate(item.id)}
                 className={cn(
-                  "group/nav relative flex w-full items-center gap-3 rounded-xl py-2.5 pl-2.5 pr-2 text-left text-[13px] transition-colors duration-200",
+                  "nav-rail-item group/nav relative flex w-full items-center gap-3 rounded-xl py-2.5 pl-2.5 pr-2 text-left text-[13px]",
                   isActive
                     ? "font-medium text-foreground"
-                    : "font-normal text-muted-foreground hover:bg-muted/50 hover:text-foreground",
+                    : "font-normal text-muted-foreground hover:text-foreground",
                 )}
               >
                 <span
                   className={cn(
-                    "w-5 shrink-0 text-right font-mono text-[9px] tabular-nums tracking-[0.1em] transition-colors duration-200",
-                    isActive ? "text-primary" : "text-muted-foreground/65 group-hover/nav:text-muted-foreground",
+                    "nav-rail-marker w-5 shrink-0 text-right font-mono text-[9px] tabular-nums tracking-[0.1em] transition-all duration-200",
+                    isActive ? "text-primary" : "text-muted-foreground/65",
                   )}
                   aria-hidden
                 >

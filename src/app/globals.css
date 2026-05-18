@@ -4,33 +4,33 @@
 
 /*
   Palette (HSL components — space-separated for Tailwind opacity modifiers)
-  Dark: blue-violet inkwell base + lagoon patina primary + violet secondary glow
+  Dark: nocturne indigo ink + lagoon patina + orchid glow (no neutral gray base)
   Light: warm ivory parchment + deep mineral teal primary
 */
 
 :root {
-  /* — Studio night (default) — */
-  --background: 236 42% 5%;
-  --foreground: 43 22% 94%;
-  --card: 235 36% 8%;
-  --card-foreground: 43 18% 93%;
-  --primary: 169 50% 46%;
-  --primary-foreground: 236 48% 8%;
-  --secondary: 235 28% 12%;
-  --secondary-foreground: 43 15% 92%;
-  --muted: 233 24% 14%;
-  --muted-foreground: 218 14% 58%;
-  --border: 232 26% 17%;
-  --input: 232 26% 17%;
-  --ring: 169 50% 50%;
+  /* — Nocturne ink (default): saturated indigo-violet studio, warm parchment type — */
+  --background: 252 48% 9%;
+  --foreground: 38 32% 92%;
+  --card: 250 44% 13%;
+  --card-foreground: 38 28% 91%;
+  --primary: 172 62% 46%;
+  --primary-foreground: 252 48% 9%;
+  --secondary: 268 42% 19%;
+  --secondary-foreground: 38 26% 90%;
+  --muted: 258 38% 21%;
+  --muted-foreground: 248 28% 72%;
+  --border: 262 36% 30%;
+  --input: 262 36% 30%;
+  --ring: 172 62% 50%;
   --radius: 0.8rem;
 
   /* Atmosphere (backdrops, progress, accents) */
-  --ambient-a: 169 58% 42%;
-  --ambient-b: 265 42% 52%;
-  --ambient-c: 210 45% 48%;
-  --folio-grid: 148 163 184;
-  --folio-hatch-alpha: 0.045;
+  --ambient-a: 172 68% 42%;
+  --ambient-b: 278 58% 58%;
+  --ambient-c: 198 58% 48%;
+  --folio-grid: 108 124 220;
+  --folio-hatch-alpha: 0.038;
 }
 
 .light {
@@ -83,6 +83,21 @@
     transition:
       background-color 0.55s cubic-bezier(0.33, 1, 0.68, 1),
       color 0.45s cubic-bezier(0.33, 1, 0.68, 1);
+  }
+
+  /** Dark: chromatic depth — teal crown, orchid flank, indigo floor */
+  html:not(.light) body {
+    background-color: hsl(var(--background));
+    background-image:
+      radial-gradient(ellipse 105% 68% at 50% -22%, hsl(var(--ambient-a) / 0.2), transparent 56%),
+      radial-gradient(ellipse 72% 52% at 100% 8%, hsl(var(--ambient-b) / 0.16), transparent 52%),
+      radial-gradient(ellipse 58% 42% at 0% 92%, hsl(252 55% 38% / 0.14), transparent 48%),
+      linear-gradient(
+        168deg,
+        hsl(252 50% 11%) 0%,
+        hsl(258 46% 9%) 42%,
+        hsl(248 52% 10%) 100%
+      );
   }
 
   ::selection {
@@ -145,6 +160,44 @@
     );
   }
 
+  html:not(.light) .ambient-orb-a {
+    @apply opacity-55;
+    background: radial-gradient(
+      ellipse at center,
+      hsl(var(--ambient-a) / 0.38) 0%,
+      transparent 70%
+    );
+  }
+
+  html:not(.light) .ambient-orb-b {
+    opacity: 0.38;
+    background: radial-gradient(
+      ellipse at center,
+      hsl(var(--ambient-b) / 0.28) 0%,
+      transparent 72%
+    );
+  }
+
+  html:not(.light) .ambient-orb-c {
+    @apply opacity-40;
+    background: radial-gradient(
+      ellipse at center,
+      hsl(var(--ambient-c) / 0.22) 0%,
+      transparent 68%
+    );
+  }
+
+  html:not(.light) .bg-grid-fine {
+    opacity: 0.38;
+    background-image:
+      linear-gradient(to right, rgb(var(--folio-grid) / 0.11) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(var(--folio-grid) / 0.11) 1px, transparent 1px);
+  }
+
+  html:not(.light) .folio-hatch {
+    opacity: 0.28;
+  }
+
   .light .ambient-orb-a {
     @apply opacity-30;
   }
@@ -159,8 +212,8 @@
 
   .bg-grid-fine {
     background-image:
-      linear-gradient(to right, rgb(var(--folio-grid) / 0.07) 1px, transparent 1px),
-      linear-gradient(to bottom, rgb(var(--folio-grid) / 0.07) 1px, transparent 1px);
+      linear-gradient(to right, rgb(var(--folio-grid) / 0.09) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(var(--folio-grid) / 0.09) 1px, transparent 1px);
     background-size: 48px 48px;
     transition: opacity 0.5s ease;
   }
@@ -221,7 +274,17 @@
   }
 
   .surface-rail {
-    @apply border-border/80 bg-gradient-to-b from-background/95 via-background/90 to-background/80 backdrop-blur-[2px] transition-colors duration-500;
+    @apply border-border/80 bg-gradient-to-b from-card/90 via-background/95 to-background/90 backdrop-blur-[2px] transition-colors duration-500;
+  }
+
+  html:not(.light) .surface-rail {
+    @apply border-primary/10 from-card via-secondary/50 to-background;
+    background-image: linear-gradient(
+      180deg,
+      hsl(var(--card) / 0.96) 0%,
+      hsl(var(--secondary) / 0.45) 48%,
+      hsl(var(--background) / 0.98) 100%
+    );
   }
 
   /** Rail / dock: brand social targets */
@@ -236,31 +299,443 @@
 
   /** Primary content surface */
   .hero-surface {
-    @apply rounded-2xl border border-border bg-gradient-to-br from-card/40 via-background/30 to-transparent shadow-[0_28px_90px_-50px_rgba(0,0,0,0.75)] ring-1 ring-inset ring-border/40;
+    @apply rounded-2xl border border-border bg-gradient-to-br from-card/55 via-muted/25 to-transparent shadow-[0_28px_90px_-50px_rgba(0,0,0,0.55)] ring-1 ring-inset ring-border/50;
+  }
+
+  html:not(.light) .hero-surface {
+    @apply border-primary/20 shadow-[0_28px_80px_-32px_rgba(12,8,32,0.72)] ring-primary/10;
+    background-image: linear-gradient(
+      135deg,
+      hsl(var(--card) / 0.92) 0%,
+      hsl(var(--secondary) / 0.55) 42%,
+      hsl(var(--muted) / 0.25) 100%
+    );
+  }
+
+  html:not(.light) .folio-action-chip {
+    @apply border-primary/25 bg-secondary/40 text-secondary-foreground hover:border-primary/50 hover:bg-primary/10 hover:text-foreground;
   }
 
   .light .hero-surface {
     @apply shadow-[0_24px_70px_-40px_rgba(30,40,60,0.18)];
   }
 
-  /** Artifacts — project cards */
-  .artifact-cta {
-    @apply inline-flex items-center gap-1.5 rounded-lg border border-border/80 bg-background/50 px-3 py-2 text-[12px] font-medium text-foreground/90 transition-colors duration-200 hover:border-primary/40 hover:bg-primary/[0.06] hover:text-primary;
+  /** Artifacts — staggered builds with diagram panels */
+  .artifacts-register {
+    @apply relative;
   }
 
-  .artifact-cta-icon {
-    @apply inline-flex h-8 w-8 items-center justify-center rounded-lg border border-border/75 bg-background/55 text-foreground/80 transition-colors duration-200 hover:border-primary/40 hover:bg-primary/[0.07] hover:text-primary;
+  .artifact-row:not(:last-child)::after {
+    content: "";
+    @apply pointer-events-none absolute -bottom-5 left-0 right-0 h-px bg-border/45 sm:-bottom-6 lg:-bottom-7;
   }
 
-  .artifact-stack-chip {
-    @apply inline-flex rounded border border-border/60 bg-background/40 px-1.5 py-0.5 text-[9px] font-medium tracking-tight text-muted-foreground sm:text-[10px];
+  .artifact-tag {
+    @apply inline-flex items-center rounded border border-border/80 bg-muted/15 px-1.5 py-px font-mono text-[9px] tracking-wide text-muted-foreground sm:px-2 sm:py-0.5 sm:text-[10px];
   }
 
-  .artifact-stack-chip:hover {
-    @apply border-primary/25 text-foreground;
+  .artifact-tag::before {
+    content: "[ ";
+    @apply text-muted-foreground/50;
   }
 
-  .artifact-stack-more {
-    @apply inline-flex rounded border border-dashed border-border/55 px-1.5 py-0.5 text-[9px] font-mono tabular-nums text-muted-foreground/90 sm:text-[10px];
+  .artifact-tag::after {
+    content: " ]";
+    @apply text-muted-foreground/50;
+  }
+
+  .artifact-link {
+    @apply inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-primary/80 transition-all duration-300 hover:text-primary hover:drop-shadow-[0_0_8px_hsl(var(--primary)_/_0.55)] sm:text-[11px];
+  }
+
+  .artifact-diagram-shell {
+    @apply relative flex min-h-0 items-center justify-center rounded-md border border-border/50 bg-card/40 p-3 ring-1 ring-inset ring-border/30 sm:rounded-lg sm:p-4 lg:min-h-[10rem] lg:p-5;
+  }
+
+  html:not(.light) .artifact-diagram-shell {
+    @apply border-primary/15 bg-secondary/30 ring-primary/5;
+    background-image: linear-gradient(
+      145deg,
+      hsl(var(--secondary) / 0.35) 0%,
+      hsl(var(--card) / 0.5) 100%
+    );
+  }
+
+  .artifact-diagram-inner {
+    @apply w-full max-w-full lg:max-w-md;
+  }
+
+  .artifact-diagram-inner--split {
+    @apply grid max-w-none grid-cols-2 gap-3 sm:gap-4;
+  }
+
+  .artifact-diagram-label {
+    @apply font-mono text-[9px] uppercase tracking-[0.18em] text-primary/70;
+  }
+
+  .artifact-bg-num {
+    @apply z-0;
+  }
+
+  .artifact-content,
+  .artifact-diagram-shell {
+    @apply relative z-[1];
+  }
+
+  /** Instruments — compact roadmap map (roadmap.sh inspired) */
+  .roadmap {
+    @apply relative w-full;
+  }
+
+  .roadmap-grid {
+    @apply grid list-none grid-cols-2 gap-2 p-0 sm:grid-cols-3 sm:gap-2.5 lg:max-w-3xl;
+  }
+
+  .roadmap-cell {
+    @apply relative min-w-0 list-none;
+  }
+
+  .roadmap-cell--wide {
+    @apply col-span-2;
+  }
+
+  .roadmap-node {
+    @apply relative h-full overflow-hidden rounded-lg border border-border/60 bg-card/40 p-2 transition-[border-color,box-shadow,transform] duration-300 sm:p-2.5;
+    border-left-width: 3px;
+    border-left-color: var(--roadmap-accent, hsl(var(--primary) / 0.65));
+  }
+
+  .roadmap-node[data-track="0"] {
+    --roadmap-accent: hsl(var(--primary) / 0.75);
+  }
+
+  .roadmap-node[data-track="1"] {
+    --roadmap-accent: hsl(var(--ambient-b) / 0.8);
+  }
+
+  .roadmap-node[data-track="2"] {
+    --roadmap-accent: hsl(var(--ambient-c) / 0.85);
+  }
+
+  .roadmap-node[data-track="3"] {
+    --roadmap-accent: hsl(38 72% 58% / 0.85);
+  }
+
+  .light .roadmap-node[data-track="3"] {
+    --roadmap-accent: hsl(32 58% 42% / 0.75);
+  }
+
+  .roadmap-node-cap {
+    @apply flex min-w-0 items-center gap-1.5 border-b border-border/40 pb-1.5;
+  }
+
+  .roadmap-node-step {
+    @apply shrink-0 text-[9px] tracking-[0.1em] text-muted-foreground/75 transition-colors duration-300;
+  }
+
+  .roadmap-node-title {
+    @apply min-w-0 flex-1 font-mono text-[9px] font-semibold uppercase leading-tight tracking-[0.12em] text-foreground transition-colors duration-300 sm:text-[10px] sm:tracking-[0.14em];
+  }
+
+  .roadmap-node-skills {
+    @apply mt-1.5 flex flex-wrap gap-1 p-0;
+  }
+
+  .roadmap-node-skills li {
+    @apply list-none;
+  }
+
+  .roadmap-skill {
+    @apply inline-block max-w-full truncate rounded border border-border/45 bg-background/40 px-1.5 py-px font-mono text-[8px] leading-tight tracking-wide text-muted-foreground sm:text-[9px];
+  }
+
+  html:not(.light) .roadmap-node {
+    @apply border-border/50 bg-secondary/20;
+  }
+
+  html:not(.light) .roadmap-skill {
+    @apply border-primary/10 bg-background/25;
+  }
+
+  /* — Interactive hover system (pointer devices) — */
+  @media (hover: hover) and (pointer: fine) {
+    .folio-action-chip {
+      @apply relative overflow-hidden;
+      transition:
+        transform 0.28s cubic-bezier(0.33, 1, 0.68, 1),
+        border-color 0.28s ease,
+        box-shadow 0.28s ease,
+        color 0.28s ease,
+        background-color 0.28s ease;
+    }
+
+    .folio-action-chip::before {
+      content: "";
+      @apply pointer-events-none absolute inset-0;
+      background: linear-gradient(
+        105deg,
+        transparent 38%,
+        hsl(var(--primary) / 0.18) 50%,
+        transparent 62%
+      );
+      transform: translateX(-130%);
+      transition: transform 0.55s cubic-bezier(0.33, 1, 0.68, 1);
+    }
+
+    .folio-action-chip:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 32px -12px hsl(var(--primary) / 0.45);
+    }
+
+    .folio-action-chip:hover::before {
+      transform: translateX(130%);
+    }
+
+    .social-rail-link {
+      transition:
+        transform 0.28s cubic-bezier(0.33, 1, 0.68, 1),
+        border-color 0.28s ease,
+        box-shadow 0.28s ease,
+        color 0.28s ease,
+        background-color 0.28s ease;
+    }
+
+    .social-rail-link:hover {
+      transform: translateY(-3px) scale(1.06);
+      box-shadow:
+        0 0 0 1px hsl(var(--primary) / 0.25),
+        0 12px 28px -10px hsl(var(--primary) / 0.4);
+    }
+
+    .hover-brand-card {
+      transition:
+        transform 0.35s cubic-bezier(0.33, 1, 0.68, 1),
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+    }
+
+    .hover-brand-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 48px -28px hsl(var(--primary) / 0.35);
+    }
+
+    .nav-rail-item {
+      transition:
+        transform 0.22s ease,
+        color 0.22s ease,
+        background-color 0.22s ease;
+    }
+
+    .nav-rail-item:not([aria-current="location"]):hover {
+      transform: translateX(4px);
+      background: linear-gradient(
+        90deg,
+        hsl(var(--primary) / 0.1) 0%,
+        hsl(var(--secondary) / 0.35) 55%,
+        transparent 100%
+      );
+    }
+
+    .nav-rail-item:not([aria-current="location"]):hover .nav-rail-marker {
+      @apply text-primary;
+    }
+
+    .experience-entry {
+      transition: transform 0.3s cubic-bezier(0.33, 1, 0.68, 1);
+    }
+
+    .experience-entry:hover {
+      transform: translateX(4px);
+    }
+
+    .experience-entry:hover .experience-node {
+      transform: scale(1.35);
+      box-shadow: 0 0 20px hsl(var(--primary) / 0.55);
+    }
+
+    .experience-entry:hover .experience-body {
+      border-color: hsl(var(--primary) / 0.35);
+    }
+
+    .experience-entry:hover .experience-role {
+      color: hsl(var(--primary));
+    }
+
+    .roadmap-node:hover {
+      transform: translateY(-2px) scale(1.02);
+      border-color: hsl(var(--primary) / 0.35);
+      box-shadow:
+        0 0 0 1px hsl(var(--primary) / 0.08),
+        0 12px 28px -14px hsl(var(--primary) / 0.35);
+    }
+
+    .roadmap-node:hover .roadmap-node-step {
+      color: hsl(var(--primary));
+    }
+
+    .roadmap-node:hover .roadmap-node-title {
+      color: hsl(var(--primary));
+      letter-spacing: 0.16em;
+    }
+
+    .roadmap-skill {
+      transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        background-color 0.2s ease,
+        color 0.2s ease;
+    }
+
+    .roadmap-skill:hover {
+      transform: translateY(-1px);
+      border-color: hsl(var(--primary) / 0.4);
+      background-color: hsl(var(--primary) / 0.12);
+      color: hsl(var(--foreground));
+    }
+
+    .observation-line {
+      @apply relative rounded-r-lg py-1 pr-2;
+      transition:
+        transform 0.28s ease,
+        color 0.28s ease,
+        background-color 0.28s ease;
+    }
+
+    .observation-line:hover {
+      transform: translateX(4px);
+      background: linear-gradient(90deg, hsl(var(--primary) / 0.08), transparent 85%);
+      color: hsl(var(--foreground));
+    }
+
+    .observation-line:hover .observation-index {
+      @apply text-primary;
+    }
+
+    .group\/artifact {
+      transition: transform 0.35s cubic-bezier(0.33, 1, 0.68, 1);
+    }
+
+    .group\/artifact:hover {
+      transform: translateY(-3px);
+    }
+
+    .group\/artifact::before {
+      content: "";
+      @apply pointer-events-none absolute inset-0 -z-10 rounded-xl opacity-0;
+      background: radial-gradient(
+        ellipse 70% 55% at 30% 20%,
+        hsl(var(--primary) / 0.1),
+        transparent 65%
+      );
+      transition: opacity 0.4s ease;
+    }
+
+    .group\/artifact:hover::before {
+      @apply opacity-100;
+    }
+
+    .group\/artifact:hover .artifact-bg-num {
+      color: hsl(var(--primary) / 0.07);
+    }
+
+    .group\/artifact:hover .artifact-diagram-shell {
+      transform: translateY(-2px) scale(1.01);
+      border-color: hsl(var(--primary) / 0.4);
+      box-shadow:
+        0 0 0 1px hsl(var(--primary) / 0.12),
+        0 16px 40px -16px hsl(var(--primary) / 0.35);
+    }
+
+    .artifact-diagram-shell {
+      transition:
+        transform 0.35s cubic-bezier(0.33, 1, 0.68, 1),
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+    }
+
+    .artifact-tag {
+      transition:
+        transform 0.22s ease,
+        border-color 0.22s ease,
+        color 0.22s ease,
+        box-shadow 0.22s ease,
+        background-color 0.22s ease;
+    }
+
+    .artifact-tag:hover {
+      transform: translateY(-2px);
+      border-color: hsl(var(--primary) / 0.45);
+      color: hsl(var(--foreground));
+      background-color: hsl(var(--primary) / 0.1);
+      box-shadow: 0 6px 18px -8px hsl(var(--primary) / 0.45);
+    }
+
+    .artifact-link {
+      @apply relative;
+    }
+
+    .artifact-link::after {
+      content: "";
+      @apply absolute bottom-0 left-0 h-px w-full origin-left scale-x-0;
+      background: linear-gradient(
+        90deg,
+        hsl(var(--primary)),
+        hsl(var(--ambient-b) / 0.85)
+      );
+      transition: transform 0.35s cubic-bezier(0.33, 1, 0.68, 1);
+    }
+
+    .artifact-link:hover::after {
+      @apply scale-x-100;
+    }
+
+    .artifact-link:hover {
+      transform: translateX(2px);
+      text-shadow: 0 0 20px hsl(var(--primary) / 0.5);
+    }
+
+    .hero-surface {
+      transition:
+        border-color 0.4s ease,
+        box-shadow 0.4s ease,
+        transform 0.4s cubic-bezier(0.33, 1, 0.68, 1);
+    }
+
+    .hero-surface:hover {
+      transform: translateY(-2px);
+      border-color: hsl(var(--primary) / 0.35);
+      box-shadow:
+        0 0 0 1px hsl(var(--primary) / 0.1),
+        0 28px 70px -36px hsl(var(--primary) / 0.25);
+    }
+
+    .folio-strip-chip:not([aria-current="true"]):hover {
+      transform: translateY(-3px);
+      border-color: hsl(var(--primary) / 0.35);
+      box-shadow: 0 12px 32px -14px hsl(var(--primary) / 0.4);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .folio-action-chip::before,
+    .folio-action-chip:hover,
+    .social-rail-link:hover,
+    .hover-brand-card:hover,
+    .nav-rail-item:hover,
+    .experience-entry:hover,
+    .roadmap-node:hover,
+    .roadmap-skill:hover,
+    .observation-line:hover,
+    .group\/artifact:hover,
+    .group\/artifact:hover .artifact-diagram-shell,
+    .artifact-tag:hover,
+    .artifact-link:hover,
+    .hero-surface:hover {
+      transform: none;
+    }
+
+    .folio-action-chip:hover::before {
+      transform: translateX(-130%);
+    }
   }
 }

@@ -85,8 +85,11 @@ export function HeroSection() {
 
         <motion.div variants={fadeUp} className="mt-10 space-y-5 border-l-2 border-primary/25 pl-5 sm:mt-12 sm:space-y-6 sm:pl-6">
           {editorialIntro.observations.map((line, i) => (
-            <p key={line} className="text-[14px] leading-[1.72] text-muted-foreground sm:text-[15px]">
-              <span className="mr-3 inline-block min-w-[1.25rem] font-mono text-[10px] tabular-nums text-primary/70">
+            <p
+              key={line}
+              className="observation-line text-[14px] leading-[1.72] text-muted-foreground sm:text-[15px]"
+            >
+              <span className="observation-index mr-3 inline-block min-w-[1.25rem] font-mono text-[10px] tabular-nums text-primary/70 transition-colors duration-300">
                 {romanObservation(i + 1)}
               </span>
               {observationBody(line)}

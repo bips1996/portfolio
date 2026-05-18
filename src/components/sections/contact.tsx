@@ -2,9 +2,22 @@
 
 import { useCallback, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Check, Copy, FileText, FolderGit2, Mail, Network, Send } from "lucide-react";
+import {
+  ArrowUpRight,
+  Check,
+  Copy,
+  FileText,
+  FolderGit2,
+  Mail,
+  Network,
+  Send,
+} from "lucide-react";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { folioMeta, profileMeta, socialLinks } from "@/lib/content/portfolio-data";
+import {
+  folioMeta,
+  profileMeta,
+  socialLinks,
+} from "@/lib/content/portfolio-data";
 import { fadeUp, staggerContainer } from "@/lib/animation/motion";
 
 const emailAddress = socialLinks.email.replace(/^mailto:/i, "");
@@ -45,11 +58,7 @@ export function ContactSection() {
 
   return (
     <section id="contact" className="section-editorial pb-28 sm:pb-32">
-      <SectionHeading
-        title="Correspondence"
-        subtitle="Pick a line—no forms, no funnel. Email is the fastest path; the rest is supporting context."
-        index="04"
-      />
+      <SectionHeading title="Correspondence" />
 
       <motion.div
         variants={staggerContainer}
@@ -59,7 +68,10 @@ export function ContactSection() {
         className="relative"
       >
         <div className="relative overflow-hidden rounded-2xl border border-border/80 bg-gradient-to-br from-card/35 via-background/25 to-transparent shadow-[0_28px_80px_-48px_rgba(0,0,0,0.45)] ring-1 ring-inset ring-border/35">
-          <div className="pointer-events-none absolute inset-0 bg-grid-fine opacity-[0.4]" aria-hidden />
+          <div
+            className="pointer-events-none absolute inset-0 bg-grid-fine opacity-[0.4]"
+            aria-hidden
+          />
           <div
             className="pointer-events-none absolute -right-24 top-1/2 h-80 w-80 -translate-y-1/2 rounded-full bg-[hsl(var(--primary)/0.08)] blur-3xl"
             aria-hidden
@@ -70,7 +82,10 @@ export function ContactSection() {
           />
 
           <div className="relative grid gap-10 p-6 sm:p-8 lg:grid-cols-12 lg:gap-12 lg:p-10">
-            <motion.div variants={fadeUp} className="flex flex-col justify-between gap-10 lg:col-span-5">
+            <motion.div
+              variants={fadeUp}
+              className="flex flex-col justify-between gap-10 lg:col-span-5"
+            >
               <div className="relative">
                 <span
                   className="pointer-events-none absolute -left-1 top-0 hidden h-[4.5rem] w-px bg-gradient-to-b from-primary/50 via-primary/15 to-transparent sm:block"
@@ -80,8 +95,9 @@ export function ContactSection() {
                   Open signal
                 </p>
                 <p className="mt-5 max-w-[26rem] pl-0 font-display text-[1.3rem] italic leading-snug tracking-tight text-foreground sm:pl-5 sm:text-[1.45rem]">
-                  Hiring, a collaboration, or a stubborn platform question—say what you&apos;re building in one breath and I&apos;ll
-                  answer in kind.
+                  Hiring, a collaboration, or a stubborn platform question—say
+                  what you&apos;re building in one breath and I&apos;ll answer
+                  in kind.
                 </p>
               </div>
               <div className="flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-border/65 pt-6 font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground sm:pl-5">
@@ -91,7 +107,10 @@ export function ContactSection() {
                       className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary/35 opacity-70 motion-reduce:animate-none motion-reduce:opacity-0"
                       aria-hidden
                     />
-                    <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" aria-hidden />
+                    <span
+                      className="relative inline-flex h-2 w-2 rounded-full bg-primary"
+                      aria-hidden
+                    />
                   </span>
                   Inbox checked daily
                 </span>
@@ -131,7 +150,10 @@ export function ContactSection() {
                         >
                           {copied ? (
                             <>
-                              <Check className="h-3.5 w-3.5 text-primary" aria-hidden />
+                              <Check
+                                className="h-3.5 w-3.5 text-primary"
+                                aria-hidden
+                              />
                               Copied
                             </>
                           ) : (
@@ -146,7 +168,10 @@ export function ContactSection() {
                           className="btn-primary inline-flex min-h-[2.5rem] flex-1 items-center justify-center gap-2 font-mono text-[11px] sm:flex-initial sm:min-w-[6.75rem]"
                         >
                           Compose
-                          <Send className="h-3.5 w-3.5 opacity-90" aria-hidden />
+                          <Send
+                            className="h-3.5 w-3.5 opacity-90"
+                            aria-hidden
+                          />
                         </a>
                       </div>
                     </div>
@@ -169,7 +194,11 @@ export function ContactSection() {
                   >
                     <div className="flex items-start justify-between gap-2">
                       <span className="flex h-10 w-10 items-center justify-center rounded-lg border border-border/85 bg-background/45 text-foreground/90 transition-colors duration-300 group-hover:border-primary/32 group-hover:bg-primary/[0.06] group-hover:text-primary">
-                        <ch.icon className="h-[1.15rem] w-[1.15rem]" strokeWidth={1.75} aria-hidden />
+                        <ch.icon
+                          className="h-[1.15rem] w-[1.15rem]"
+                          strokeWidth={1.75}
+                          aria-hidden
+                        />
                       </span>
                       <ArrowUpRight
                         className="h-4 w-4 shrink-0 text-muted-foreground opacity-0 transition duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100 group-hover:text-primary"
@@ -180,7 +209,9 @@ export function ContactSection() {
                       <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
                         {ch.label}
                       </p>
-                      <p className="mt-1.5 text-[12px] leading-snug text-muted-foreground">{ch.hint}</p>
+                      <p className="mt-1.5 text-[12px] leading-snug text-muted-foreground">
+                        {ch.hint}
+                      </p>
                     </div>
                   </motion.a>
                 ))}
@@ -190,8 +221,13 @@ export function ContactSection() {
 
           <footer className="relative flex flex-wrap items-center justify-between gap-3 border-t border-border/70 bg-muted/[0.07] px-6 py-4 font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground sm:px-8 sm:py-4">
             <span className="inline-flex items-center gap-3">
-              <span className="h-px w-8 bg-gradient-to-r from-primary/55 to-transparent" aria-hidden />
-              <span className="font-display normal-case italic tracking-wide text-foreground/80">Finis</span>
+              <span
+                className="h-px w-8 bg-gradient-to-r from-primary/55 to-transparent"
+                aria-hidden
+              />
+              <span className="font-display normal-case italic tracking-wide text-foreground/80">
+                Finis
+              </span>
               <span className="text-border" aria-hidden>
                 ·
               </span>

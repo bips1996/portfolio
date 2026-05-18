@@ -49,7 +49,7 @@ export function MobileFolioStrip({ activeSection, onNavigate }: MobileFolioStrip
               onClick={() => onNavigate(item.id)}
               className={cn(
                 "snap-center",
-                "group relative shrink-0 select-none rounded-2xl border px-3.5 py-2.5 text-left transition-[transform,box-shadow,border-color,background-color] duration-300 active:scale-[0.98]",
+                "folio-strip-chip group relative shrink-0 select-none rounded-2xl border px-3.5 py-2.5 text-left transition-[transform,box-shadow,border-color,background-color] duration-300 active:scale-[0.98]",
                 "min-w-[5.75rem] max-w-[7.25rem] sm:min-w-[6.25rem]",
                 isActive
                   ? "border-primary/45 bg-gradient-to-br from-primary/[0.14] via-primary/[0.06] to-transparent shadow-[0_0_28px_-12px_hsl(var(--primary)/0.55)]"
