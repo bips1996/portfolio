@@ -50,7 +50,10 @@ export function LeftRail({ activeSection, onNavigate }: LeftRailProps) {
         </a>
 
         <p className="mt-10 font-mono text-[9px] uppercase tracking-[0.2em] text-muted-foreground/80">Contents</p>
-        <nav className="mt-3 min-h-0 flex-1 space-y-0.5 overflow-y-auto overscroll-contain pr-1" aria-label="Section navigation">
+        <nav
+          className="mt-3 min-h-0 flex-1 space-y-0.5 overflow-y-auto overscroll-contain pr-1"
+          aria-label="Section navigation"
+        >
           {navItems.map((item, idx) => {
             const isActive = activeSection === item.id;
             const marker = NAV_INDEX[idx] ?? String(idx + 1);
@@ -103,28 +106,28 @@ export function LeftRail({ activeSection, onNavigate }: LeftRailProps) {
 
       <div className="mt-8 shrink-0 border-t border-border/80 pt-6">
         <p className="mb-3 font-mono text-[9px] uppercase tracking-[0.18em] text-muted-foreground">Connect</p>
-        <div className="flex flex-wrap items-center gap-2">
-          <a aria-label="Email" href={socialLinks.email} className="social-rail-link">
-            <Mail className="h-[18px] w-[18px] stroke-[1.75]" strokeWidth={1.75} />
-          </a>
-          <a
-            aria-label="GitHub"
-            href={socialLinks.github}
-            target="_blank"
-            rel="noreferrer"
-            className="social-rail-link"
-          >
-            <IconGitHub />
-          </a>
-          <a
-            aria-label="LinkedIn"
-            href={socialLinks.linkedin}
-            target="_blank"
-            rel="noreferrer"
-            className="social-rail-link"
-          >
-            <IconLinkedIn />
-          </a>
+        <div className="flex flex-wrap items-center gap-2 pl-2.5">
+            <a aria-label="Email" href={socialLinks.email} className="social-rail-link">
+              <Mail className="h-[18px] w-[18px] stroke-[1.75]" strokeWidth={1.75} />
+            </a>
+            <a
+              aria-label="GitHub"
+              href={socialLinks.github}
+              target="_blank"
+              rel="noreferrer"
+              className="social-rail-link"
+            >
+              <IconGitHub />
+            </a>
+            <a
+              aria-label="LinkedIn"
+              href={socialLinks.linkedin}
+              target="_blank"
+              rel="noreferrer"
+              className="social-rail-link"
+            >
+              <IconLinkedIn />
+            </a>
           <div className="ml-auto flex items-center pl-1">
             <ThemeToggle />
           </div>

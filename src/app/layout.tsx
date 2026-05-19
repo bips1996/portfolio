@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import { SiteBackdrop } from "@/components/layout/site-backdrop";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 
 const inter = Inter({
@@ -54,8 +55,11 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${inter.variable} ${jetbrainsMono.variable} ${displaySerif.variable} h-full scroll-smooth antialiased`}
     >
-      <body className="min-h-full bg-background font-sans text-foreground">
-        <ThemeProvider>{children}</ThemeProvider>
+      <body className="min-h-full bg-transparent font-sans text-foreground">
+        <ThemeProvider>
+          <SiteBackdrop />
+          <div className="relative z-10">{children}</div>
+        </ThemeProvider>
       </body>
     </html>
   );
