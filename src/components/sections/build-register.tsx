@@ -395,6 +395,18 @@ export function BuildRegister({ projects }: Props) {
                     isReversed ? "lg:order-1" : "lg:order-2",
                   )}
                 >
+                  <svg
+                    className="diagram-corner-accent"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                    aria-hidden
+                  >
+                    <path
+                      d="M4 28 L4 4 L28 4"
+                      stroke="currentColor"
+                      strokeWidth="1"
+                    />
+                  </svg>
                   <ProjectDiagram kind={project.diagram} />
                 </div>
               </div>

@@ -1,19 +1,17 @@
+import { BackdropGraphics } from "@/components/graphics/backdrop-graphics";
+
 /**
- * Ambient layer uses CSS variables (--ambient-a/b/c) so hues shift with light/dark theme.
+ * Full-viewport backdrop — rendered at layout root (z-0) so it stays above body paint.
  */
 export function SiteBackdrop() {
   return (
     <div
-      className="pointer-events-none fixed inset-0 -z-10 overflow-hidden transition-colors duration-700"
+      className="site-backdrop pointer-events-none fixed inset-0 z-0 overflow-hidden"
       aria-hidden
     >
-      <div className="absolute inset-0 bg-background transition-colors duration-700" />
-      <div className="ambient-orb ambient-orb-a" />
-      <div className="ambient-orb ambient-orb-b" />
-      <div className="ambient-orb ambient-orb-c hidden sm:block" />
-      <div className="absolute inset-0 bg-grid-fine opacity-[0.35] dark:opacity-[0.42]" />
-      <div className="absolute inset-0 folio-hatch opacity-[0.45] dark:opacity-[0.28]" />
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/80 transition-colors duration-700 dark:to-background/60" />
+      <div className="site-backdrop-base absolute inset-0" />
+      <BackdropGraphics />
+      <div className="absolute inset-0 bg-grid-fine opacity-[0.14] dark:opacity-[0.2]" />
     </div>
   );
 }

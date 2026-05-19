@@ -5,14 +5,26 @@ import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 
+type ThemeToggleProps = {
+  variant?: "switch" | "icon";
+};
+
 /** Track 5.75rem, p-0.5: inner 88px → half 44px (w-11) */
-export function ThemeToggle() {
+export function ThemeToggle({ variant = "switch" }: ThemeToggleProps) {
   const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => setMounted(true), []);
 
   if (!mounted) {
+    if (variant === "icon") {
+      return (
+        <span
+          className="inline-block h-8 w-8 shrink-0 rounded-full border border-border/50 bg-muted/40"
+          aria-hidden
+        />
+      );
+    }
     return (
       <span
         className="inline-block h-9 w-[5.75rem] shrink-0 rounded-full border border-border/50 bg-muted/40"
@@ -22,6 +34,27 @@ export function ThemeToggle() {
   }
 
   const isDark = resolvedTheme !== "light";
+
+  if (variant === "icon") {
+    return (
+      <button
+        type="button"
+        aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+        onClick={() => setTheme(isDark ? "light" : "dark")}
+        className={cn(
+          "flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-border/60 bg-muted/30",
+          "transition-[border-color,background-color,transform] duration-200 hover:border-primary/30 hover:bg-primary/[0.08] active:scale-95",
+          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+        )}
+      >
+        {isDark ? (
+          <MoonStar className="h-3.5 w-3.5 text-primary" strokeWidth={1.6} />
+        ) : (
+          <Sun className="h-3.5 w-3.5 text-primary" strokeWidth={1.6} />
+        )}
+      </button>
+    );
+  }
 
   return (
     <button

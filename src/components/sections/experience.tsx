@@ -21,11 +21,12 @@ export function ExperienceSection() {
         viewport={{ once: true, margin: "-80px" }}
         className="relative"
       >
-        {/* Spine */}
+        {/* Spine + glow */}
         <div
           className="absolute left-[7px] top-3 bottom-3 w-px bg-gradient-to-b from-primary/45 via-border/80 to-transparent sm:left-[9px]"
           aria-hidden
         />
+        <div className="experience-spine-glow" aria-hidden />
 
         <div className="space-y-0">
           {experiences.map((item) => (

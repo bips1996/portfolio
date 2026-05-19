@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { HeroAccent } from "@/components/graphics/hero-accent";
 import {
   brandMedia,
   editorialIntro,
@@ -16,14 +17,15 @@ export function HeroSection() {
   return (
     <section id="hero" className="scroll-mt-28 pb-6 sm:scroll-mt-32 sm:pb-8">
       <motion.div
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-40px" }}
-        className="hero-surface relative overflow-hidden px-5 py-8 sm:px-9 sm:py-11"
-      >
-        <span className="pointer-events-none absolute left-4 top-4 h-3.5 w-3.5 border-l border-t border-primary/30 sm:left-5 sm:top-5" aria-hidden />
-        <span className="pointer-events-none absolute right-4 top-4 h-3.5 w-3.5 border-r border-t border-primary/30 sm:right-5 sm:top-5" aria-hidden />
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-40px" }}
+          className="hero-surface relative overflow-hidden px-5 py-8 sm:px-9 sm:py-11"
+        >
+          <HeroAccent />
+          <span className="pointer-events-none absolute left-4 top-4 h-3.5 w-3.5 border-l border-t border-primary/30 sm:left-5 sm:top-5" aria-hidden />
+          <span className="pointer-events-none absolute right-4 top-4 h-3.5 w-3.5 border-r border-t border-primary/30 sm:right-5 sm:top-5" aria-hidden />
 
         <div className="flex flex-col gap-8 border-b border-border/70 pb-7 sm:flex-row sm:items-center sm:justify-between sm:gap-10">
           <div className="flex min-w-0 items-center gap-4 sm:gap-5">
@@ -48,15 +50,19 @@ export function HeroSection() {
             <p className="font-mono text-[10px] tabular-nums tracking-[0.16em] text-muted-foreground sm:text-right">
               ed. {folioMeta.edition}
             </p>
-            <div className="relative h-[4.25rem] w-[4.25rem] shrink-0 sm:h-[4.75rem] sm:w-[4.75rem]">
-              <Image
-                src={brandMedia.profileSrc}
-                alt={brandMedia.profileAlt}
-                fill
-                sizes="(max-width: 640px) 68px, 76px"
-                className="rounded-full object-cover ring-2 ring-primary/35 ring-offset-2 ring-offset-[hsl(var(--background))]"
-                priority
-              />
+            <div className="hero-profile-3d relative h-[4.25rem] w-[4.25rem] shrink-0 sm:h-[4.75rem] sm:w-[4.75rem]">
+              <span className="hero-profile-glow" aria-hidden />
+              <span className="hero-profile-ring" aria-hidden />
+              <div className="relative h-full w-full overflow-hidden rounded-full ring-2 ring-primary/40 ring-offset-2 ring-offset-[hsl(var(--background))]">
+                <Image
+                  src={brandMedia.profileSrc}
+                  alt={brandMedia.profileAlt}
+                  fill
+                  sizes="(max-width: 640px) 68px, 76px"
+                  className="rounded-full object-cover"
+                  priority
+                />
+              </div>
             </div>
           </div>
         </div>
