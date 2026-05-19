@@ -29,9 +29,9 @@ export function BinaryRain() {
 
     const readColor = (viewportWidth: number) => {
       const root = document.documentElement;
-      const ambientB = getComputedStyle(root).getPropertyValue("--ambient-b").trim() || "282 58% 70%";
-      const primary = getComputedStyle(root).getPropertyValue("--primary").trim() || "168 72% 48%";
-      const ambientC = getComputedStyle(root).getPropertyValue("--ambient-c").trim() || "192 62% 54%";
+      const ambientB = getComputedStyle(root).getPropertyValue("--ambient-b").trim() || "232 28% 56%";
+      const primary = getComputedStyle(root).getPropertyValue("--primary").trim() || "164 48% 52%";
+      const ambientC = getComputedStyle(root).getPropertyValue("--ambient-c").trim() || "198 34% 50%";
       const isLight = root.classList.contains("light");
       const isMobile = viewportWidth < 1024;
 

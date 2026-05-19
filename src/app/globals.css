@@ -5,55 +5,55 @@
 /*
   Palette (HSL components — space-separated for Tailwind opacity modifiers)
 
-  Fresh studio — crisp teal accent, cool lifted bases, luminous atmosphere.
-  Dark: deep ocean ink (not flat gray-purple). Light: cool mint-white daylight.
+  Obsidian studio — neutral slate bases, refined jade accent, soft periwinkle atmosphere.
+  Dark: charcoal slate (no purple-gray cast). Light: cool paper with matching jade accent.
 */
 
 :root {
-  /* Dark — fresh lagoon night */
-  --background: 228 32% 11%;
-  --foreground: 195 30% 98%;
-  --card: 226 28% 15%;
-  --card-foreground: 195 25% 97%;
-  --primary: 168 72% 48%;
-  --primary-foreground: 228 35% 10%;
-  --secondary: 248 30% 22%;
-  --secondary-foreground: 195 22% 94%;
-  --muted: 224 24% 22%;
-  --muted-foreground: 205 20% 78%;
-  --border: 222 26% 36%;
-  --input: 222 26% 36%;
-  --ring: 168 75% 54%;
+  /* Dark — obsidian studio */
+  --background: 222 16% 7%;
+  --foreground: 210 18% 96%;
+  --card: 222 14% 10%;
+  --card-foreground: 210 16% 95%;
+  --primary: 164 48% 52%;
+  --primary-foreground: 222 18% 7%;
+  --secondary: 222 12% 14%;
+  --secondary-foreground: 210 14% 92%;
+  --muted: 222 11% 16%;
+  --muted-foreground: 215 11% 58%;
+  --border: 222 11% 22%;
+  --input: 222 11% 20%;
+  --ring: 164 52% 56%;
   --radius: 0.8rem;
 
-  --ambient-a: 168 68% 50%;
-  --ambient-b: 282 58% 70%;
-  --ambient-c: 192 62% 54%;
-  --folio-grid: 155 185 215;
-  --folio-hatch-alpha: 0.05;
+  --ambient-a: 164 42% 48%;
+  --ambient-b: 232 28% 56%;
+  --ambient-c: 198 34% 50%;
+  --folio-grid: 128 142 168;
+  --folio-hatch-alpha: 0.04;
 }
 
 .light {
-  /* Light — crisp mint daylight */
-  --background: 195 45% 99%;
-  --foreground: 225 38% 14%;
+  /* Light — cool paper */
+  --background: 210 28% 98%;
+  --foreground: 222 22% 14%;
   --card: 0 0% 100%;
-  --card-foreground: 225 38% 14%;
-  --primary: 168 58% 36%;
-  --primary-foreground: 195 50% 99%;
-  --secondary: 190 35% 95%;
-  --secondary-foreground: 225 32% 18%;
-  --muted: 195 30% 94%;
-  --muted-foreground: 215 18% 38%;
-  --border: 200 24% 86%;
-  --input: 200 24% 86%;
-  --ring: 168 58% 38%;
+  --card-foreground: 222 22% 14%;
+  --primary: 164 46% 36%;
+  --primary-foreground: 210 28% 98%;
+  --secondary: 210 22% 94%;
+  --secondary-foreground: 222 18% 18%;
+  --muted: 210 18% 93%;
+  --muted-foreground: 215 14% 40%;
+  --border: 214 18% 88%;
+  --input: 214 18% 88%;
+  --ring: 164 48% 38%;
 
-  --ambient-a: 168 55% 42%;
-  --ambient-b: 275 48% 58%;
-  --ambient-c: 192 50% 46%;
-  --folio-grid: 75 115 135;
-  --folio-hatch-alpha: 0.08;
+  --ambient-a: 164 40% 40%;
+  --ambient-b: 232 26% 52%;
+  --ambient-c: 198 32% 44%;
+  --folio-grid: 88 108 128;
+  --folio-hatch-alpha: 0.06;
 }
 
 @layer base {
@@ -112,7 +112,11 @@
 
   /** Readable column — ~65–72ch feel */
   .content-well {
-    @apply mx-auto w-full max-w-xl lg:mx-0 lg:max-w-[42rem];
+    @apply relative isolate mx-auto w-full max-w-xl lg:mx-0 lg:max-w-[42rem];
+  }
+
+  .section-editorial :is(.hero-surface, .artifact-diagram-shell, .roadmap-node, .rounded-2xl.border) {
+    background-blend-mode: normal;
   }
 
   .ambient-orb {
@@ -147,37 +151,30 @@
   }
 
   html:not(.light) .ambient-orb-a {
-    @apply opacity-55;
+    @apply opacity-45;
     background: radial-gradient(
       ellipse at center,
-      hsl(var(--ambient-a) / 0.4) 0%,
+      hsl(var(--ambient-a) / 0.28) 0%,
       transparent 68%
     );
   }
 
   html:not(.light) .ambient-orb-b {
-    opacity: 0.42;
+    opacity: 0.34;
     background: radial-gradient(
       ellipse at center,
-      hsl(var(--ambient-b) / 0.32) 0%,
+      hsl(var(--ambient-b) / 0.2) 0%,
       transparent 70%
     );
   }
 
   html:not(.light) .ambient-orb-c {
-    @apply opacity-40;
+    @apply opacity-32;
     background: radial-gradient(
       ellipse at center,
-      hsl(var(--ambient-c) / 0.28) 0%,
+      hsl(var(--ambient-c) / 0.18) 0%,
       transparent 66%
     );
-  }
-
-  html:not(.light) .bg-grid-fine {
-    opacity: 0.32;
-    background-image:
-      linear-gradient(to right, rgb(var(--folio-grid) / 0.14) 1px, transparent 1px),
-      linear-gradient(to bottom, rgb(var(--folio-grid) / 0.14) 1px, transparent 1px);
   }
 
   html:not(.light) .folio-hatch {
@@ -201,6 +198,7 @@
       linear-gradient(to right, rgb(var(--folio-grid) / 0.09) 1px, transparent 1px),
       linear-gradient(to bottom, rgb(var(--folio-grid) / 0.09) 1px, transparent 1px);
     background-size: 48px 48px;
+    background-position: center top;
     transition: opacity 0.5s ease;
   }
 
@@ -208,6 +206,22 @@
     background-image:
       linear-gradient(to right, rgb(var(--folio-grid) / 0.11) 1px, transparent 1px),
       linear-gradient(to bottom, rgb(var(--folio-grid) / 0.11) 1px, transparent 1px);
+  }
+
+  /* Site backdrop only — avoid moiré with section card surfaces */
+  .site-backdrop .bg-grid-fine {
+    @apply opacity-[0.12];
+  }
+
+  html:not(.light) .site-backdrop .bg-grid-fine {
+    background-image:
+      linear-gradient(to right, rgb(var(--folio-grid) / 0.12) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(var(--folio-grid) / 0.12) 1px, transparent 1px);
+    @apply opacity-[0.16];
+  }
+
+  .light .site-backdrop .bg-grid-fine {
+    @apply opacity-[0.1];
   }
 
   .editorial-link {
@@ -264,12 +278,12 @@
   }
 
   html:not(.light) .surface-rail {
-    @apply border-primary/10;
+    @apply border-border/60;
     background-image: linear-gradient(
       180deg,
-      hsl(var(--card) / 0.72) 0%,
-      hsl(var(--secondary) / 0.28) 48%,
-      hsl(var(--background) / 0.55) 100%
+      hsl(var(--card) / 0.94) 0%,
+      hsl(var(--muted) / 0.55) 50%,
+      hsl(var(--background) / 0.92) 100%
     );
   }
 
@@ -290,26 +304,31 @@
 
   @media (max-width: 1023px) {
     .hero-surface {
-      @apply from-card/80 via-card/70 to-card/55;
+      background-image: linear-gradient(
+        135deg,
+        hsl(var(--card) / 0.95) 0%,
+        hsl(var(--card) / 0.92) 45%,
+        hsl(var(--card) / 0.88) 100%
+      );
     }
 
     html:not(.light) .hero-surface {
       background-image: linear-gradient(
         135deg,
-        hsl(var(--card) / 0.88) 0%,
-        hsl(var(--secondary) / 0.72) 45%,
-        hsl(var(--primary) / 0.06) 100%
+        hsl(var(--card) / 0.98) 0%,
+        hsl(var(--muted) / 0.88) 48%,
+        hsl(var(--primary) / 0.04) 100%
       );
     }
   }
 
   html:not(.light) .hero-surface {
-    @apply border-primary/35 shadow-[0_28px_80px_-28px_hsl(var(--primary)/0.25)] ring-primary/15;
+    @apply border-border/80 shadow-[0_28px_80px_-32px_hsl(var(--primary)/0.18)] ring-primary/10;
     background-image: linear-gradient(
       135deg,
-      hsl(var(--card) / 0.96) 0%,
-      hsl(var(--secondary) / 0.65) 42%,
-      hsl(var(--primary) / 0.08) 100%
+      hsl(var(--card) / 0.98) 0%,
+      hsl(var(--muted) / 0.75) 45%,
+      hsl(var(--primary) / 0.06) 100%
     );
   }
 
@@ -350,15 +369,22 @@
   }
 
   .artifact-diagram-shell {
-    @apply relative flex min-h-0 items-center justify-center rounded-md border border-border/50 bg-card/40 p-3 ring-1 ring-inset ring-border/30 sm:rounded-lg sm:p-4 lg:min-h-[10rem] lg:p-5;
+    @apply relative flex min-h-0 items-center justify-center rounded-md border border-border/50 p-3 ring-1 ring-inset ring-border/30 sm:rounded-lg sm:p-4 lg:min-h-[10rem] lg:p-5;
+    background-color: hsl(var(--card) / 0.96);
+    background-image: linear-gradient(
+      165deg,
+      hsl(var(--muted) / 0.35) 0%,
+      hsl(var(--card)) 55%
+    );
   }
 
   html:not(.light) .artifact-diagram-shell {
-    @apply border-primary/15 bg-secondary/30 ring-primary/5;
+    @apply border-border/60 ring-border/40;
+    background-color: hsl(var(--card) / 0.96);
     background-image: linear-gradient(
       145deg,
-      hsl(var(--secondary) / 0.35) 0%,
-      hsl(var(--card) / 0.5) 100%
+      hsl(var(--muted) / 0.65) 0%,
+      hsl(var(--card) / 0.99) 100%
     );
   }
 
@@ -401,7 +427,8 @@
   }
 
   .roadmap-node {
-    @apply relative h-full overflow-hidden rounded-lg border border-border/60 bg-card/40 p-2 transition-[border-color,box-shadow,transform] duration-300 sm:p-2.5;
+    @apply relative h-full overflow-hidden rounded-lg border border-border/60 p-2 transition-[border-color,box-shadow,transform] duration-300 sm:p-2.5;
+    background-color: hsl(var(--card) / 0.94);
     border-left-width: 3px;
     border-left-color: var(--roadmap-accent, hsl(var(--primary) / 0.65));
     transform-style: preserve-3d;
@@ -415,11 +442,11 @@
   }
 
   .roadmap-node[data-track="1"] {
-    --roadmap-accent: hsl(var(--ambient-b) / 0.8);
+    --roadmap-accent: hsl(var(--ambient-c) / 0.75);
   }
 
   .roadmap-node[data-track="2"] {
-    --roadmap-accent: hsl(var(--ambient-c) / 0.85);
+    --roadmap-accent: hsl(var(--ambient-b) / 0.7);
   }
 
   .roadmap-node[data-track="3"] {
@@ -455,7 +482,13 @@
   }
 
   html:not(.light) .roadmap-node {
-    @apply border-border/50 bg-secondary/20;
+    @apply border-border/55;
+    background-color: hsl(var(--card) / 0.92);
+    background-image: linear-gradient(
+      180deg,
+      hsl(var(--muted) / 0.5) 0%,
+      hsl(var(--card) / 0.97) 100%
+    );
   }
 
   html:not(.light) .roadmap-skill {
@@ -716,6 +749,7 @@
 
   .folio-mobile-chrome {
     @apply isolate;
+    padding-bottom: 0.5rem;
   }
 
   .folio-chrome-panel {
@@ -746,8 +780,12 @@
   }
 
   @media (max-width: 1023px) {
+    :root {
+      --folio-chrome-offset: calc(6.5rem + env(safe-area-inset-top, 0px));
+    }
+
     section[id] {
-      scroll-margin-top: calc(6.5rem + env(safe-area-inset-top, 0px));
+      scroll-margin-top: var(--folio-chrome-offset);
     }
   }
 
@@ -837,29 +875,30 @@
     @apply flex items-start gap-3 sm:gap-4;
   }
 
-  /* Backdrop base — token-aligned gradient (no orphan purple hex) */
+  /* Backdrop base — token-aligned gradient */
   .site-backdrop-base {
     background-color: hsl(var(--background));
     background-image:
-      radial-gradient(ellipse 90% 55% at 15% -5%, hsl(var(--ambient-c) / 0.18), transparent 55%),
-      radial-gradient(ellipse 70% 50% at 95% 15%, hsl(var(--ambient-b) / 0.14), transparent 50%),
+      radial-gradient(ellipse 90% 55% at 12% -8%, hsl(var(--ambient-c) / 0.1), transparent 58%),
+      radial-gradient(ellipse 70% 50% at 92% 12%, hsl(var(--ambient-b) / 0.08), transparent 52%),
+      radial-gradient(ellipse 50% 40% at 50% 100%, hsl(var(--primary) / 0.04), transparent 55%),
       linear-gradient(
         180deg,
-        hsl(228 34% 12%) 0%,
-        hsl(235 30% 14%) 45%,
-        hsl(248 28% 18%) 100%
+        hsl(var(--background)) 0%,
+        hsl(var(--card)) 52%,
+        hsl(var(--secondary)) 100%
       );
   }
 
   .light .site-backdrop-base {
     background-image:
-      radial-gradient(ellipse 80% 50% at 10% 0%, hsl(var(--ambient-c) / 0.12), transparent 55%),
-      radial-gradient(ellipse 60% 45% at 100% 20%, hsl(var(--ambient-b) / 0.1), transparent 50%),
+      radial-gradient(ellipse 80% 50% at 10% 0%, hsl(var(--ambient-c) / 0.1), transparent 55%),
+      radial-gradient(ellipse 60% 45% at 100% 18%, hsl(var(--ambient-b) / 0.08), transparent 50%),
       linear-gradient(
         180deg,
-        hsl(195 50% 99%) 0%,
-        hsl(188 40% 97%) 50%,
-        hsl(255 35% 96%) 100%
+        hsl(var(--background)) 0%,
+        hsl(var(--muted)) 55%,
+        hsl(210 22% 95%) 100%
       );
   }
 
@@ -871,9 +910,9 @@
     @apply absolute left-1/2 top-[28%] h-[min(70vw,520px)] w-[min(90vw,720px)] -translate-x-1/2 -translate-y-1/2 rounded-full;
     background: radial-gradient(
       ellipse at center,
-      hsl(var(--ambient-b) / 0.28) 0%,
-      hsl(var(--primary) / 0.14) 42%,
-      hsl(var(--ambient-c) / 0.08) 65%,
+      hsl(var(--primary) / 0.12) 0%,
+      hsl(var(--ambient-b) / 0.1) 38%,
+      hsl(var(--ambient-c) / 0.06) 62%,
       transparent 78%
     );
     filter: blur(52px);
@@ -946,9 +985,9 @@
       width: min(110vw, 480px);
       background: radial-gradient(
         ellipse at center,
-        hsl(var(--ambient-b) / 0.3) 0%,
-        hsl(var(--primary) / 0.16) 42%,
-        hsl(var(--ambient-c) / 0.09) 60%,
+        hsl(var(--primary) / 0.14) 0%,
+        hsl(var(--ambient-b) / 0.1) 42%,
+        hsl(var(--ambient-c) / 0.06) 60%,
         transparent 78%
       );
       filter: blur(42px);
@@ -965,14 +1004,14 @@
 
     .site-backdrop-base {
       background-image:
-        radial-gradient(ellipse 100% 60% at 50% -8%, hsl(var(--ambient-b) / 0.22), transparent 52%),
-        radial-gradient(ellipse 80% 50% at 0% 14%, hsl(var(--ambient-c) / 0.14), transparent 48%),
-        radial-gradient(ellipse 70% 45% at 100% 20%, hsl(var(--primary) / 0.11), transparent 45%),
+        radial-gradient(ellipse 100% 60% at 50% -8%, hsl(var(--primary) / 0.08), transparent 52%),
+        radial-gradient(ellipse 80% 50% at 0% 14%, hsl(var(--ambient-c) / 0.1), transparent 48%),
+        radial-gradient(ellipse 70% 45% at 100% 20%, hsl(var(--ambient-b) / 0.07), transparent 45%),
         linear-gradient(
           180deg,
-          hsl(228 34% 12%) 0%,
-          hsl(235 30% 14%) 45%,
-          hsl(248 28% 18%) 100%
+          hsl(var(--background)) 0%,
+          hsl(var(--card)) 48%,
+          hsl(var(--secondary)) 100%
         );
     }
   }
