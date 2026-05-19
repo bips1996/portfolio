@@ -42,15 +42,15 @@ export default function Home() {
       <ReadingProgress />
       <KeyboardHint />
       <CommandPalette open={commandOpen} onOpenChange={setCommandOpen} onNavigate={onNavigate} />
+      <MobileFolioChrome activeSection={activeSection} onNavigate={onNavigate} />
 
       <div className="relative z-10 mx-auto flex w-full max-w-[1180px] gap-0 px-4 sm:px-7 lg:px-10">
         <LeftRail activeSection={activeSection} onNavigate={onNavigate} />
 
         <main
           id="main-content"
-          className="min-w-0 flex-1 border-l-0 bg-transparent py-8 transition-colors duration-500 sm:border-l sm:border-primary/15 sm:py-12 lg:max-w-none lg:border-l-0 lg:py-[4.25rem] lg:pl-11 lg:pr-5 xl:pl-14 max-lg:pb-[calc(6.5rem+env(safe-area-inset-bottom,0px))] max-lg:pt-6"
+          className="min-w-0 flex-1 border-l-0 bg-transparent py-8 transition-colors duration-500 sm:border-l sm:border-primary/15 sm:py-12 lg:max-w-none lg:border-l-0 lg:py-[4.25rem] lg:pl-11 lg:pr-5 xl:pl-14 max-lg:pb-[calc(6.5rem+env(safe-area-inset-bottom,0px))] max-lg:pt-[var(--folio-chrome-offset,6.5rem)]"
         >
-          <MobileFolioChrome activeSection={activeSection} onNavigate={onNavigate} />
           <div className="content-well">
             <HeroSection />
             <ExperienceSection />

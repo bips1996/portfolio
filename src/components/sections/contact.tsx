@@ -67,9 +67,9 @@ export function ContactSection() {
         viewport={{ once: true, margin: "-50px" }}
         className="relative"
       >
-        <div className="relative overflow-hidden rounded-2xl border border-border/80 bg-gradient-to-br from-card/35 via-background/25 to-transparent shadow-[0_28px_80px_-48px_rgba(0,0,0,0.45)] ring-1 ring-inset ring-border/35">
+        <div className="relative overflow-hidden rounded-2xl border border-border/80 bg-card/92 shadow-[0_28px_80px_-48px_rgba(0,0,0,0.45)] ring-1 ring-inset ring-border/35 backdrop-blur-sm dark:bg-card/88">
           <div
-            className="pointer-events-none absolute inset-0 bg-grid-fine opacity-[0.4]"
+            className="pointer-events-none absolute inset-0 bg-gradient-to-br from-primary/[0.04] via-transparent to-[hsl(var(--ambient-b)/0.05)]"
             aria-hidden
           />
           <div

@@ -14,7 +14,7 @@ interface MobileFolioChromeProps {
 }
 
 /**
- * In-flow sticky folio tab — reserves space so chapter rail never covers hero copy.
+ * Fixed folio chapter tab — stays pinned on scroll; main uses --folio-chrome-offset for spacing.
  */
 export function MobileFolioChrome({ activeSection, onNavigate }: MobileFolioChromeProps) {
   const activeIndex = Math.max(
@@ -26,13 +26,14 @@ export function MobileFolioChrome({ activeSection, onNavigate }: MobileFolioChro
 
   return (
     <header
-      className="folio-mobile-chrome sticky top-0 z-30 -mx-4 mb-5 pt-[max(0.25rem,env(safe-area-inset-top))] sm:-mx-7 sm:mb-6 lg:hidden"
+      className="folio-mobile-chrome pointer-events-none fixed inset-x-0 top-0 z-30 lg:hidden"
       aria-label="Folio chapter"
     >
       <motion.div
         layout
-        className="folio-chrome-panel relative mx-auto w-full max-w-md overflow-hidden rounded-2xl border border-border/50 bg-background/90 shadow-[0_12px_40px_-28px_rgba(0,0,0,0.35)] backdrop-blur-xl supports-[backdrop-filter]:bg-background/78 dark:border-primary/12 dark:bg-card/88 dark:shadow-[0_16px_48px_-32px_rgba(24,12,48,0.5)]"
+        className="pointer-events-auto mx-auto w-full max-w-md px-4 pt-[max(0.25rem,env(safe-area-inset-top))] sm:px-7"
       >
+        <div className="folio-chrome-panel relative overflow-hidden rounded-2xl border border-border/50 bg-background/90 shadow-[0_12px_40px_-28px_rgba(0,0,0,0.35)] backdrop-blur-xl supports-[backdrop-filter]:bg-background/78 dark:border-border/70 dark:bg-card/92 dark:shadow-[0_16px_48px_-32px_hsl(var(--primary)/0.12)]">
         <motion.div className="folio-chrome-capsule flex items-center gap-2 px-2.5 py-2">
           <button
             type="button"
@@ -122,6 +123,7 @@ export function MobileFolioChrome({ activeSection, onNavigate }: MobileFolioChro
             );
           })}
         </nav>
+        </div>
       </motion.div>
     </header>
   );

@@ -11,7 +11,7 @@ export function SiteBackdrop() {
     >
       <div className="site-backdrop-base absolute inset-0" />
       <BackdropGraphics />
-      <div className="absolute inset-0 bg-grid-fine opacity-[0.14] dark:opacity-[0.2]" />
+      <div className="absolute inset-0 bg-grid-fine" />
     </div>
   );
 }
