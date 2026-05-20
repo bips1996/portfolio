@@ -13,7 +13,6 @@ import { CommandPalette } from "@/components/ui/command-palette";
 import { HeroSection } from "@/components/sections/hero";
 import { ExperienceSection } from "@/components/sections/experience";
 import { ProjectsSection } from "@/components/sections/projects";
-import { SkillsSection } from "@/components/sections/skills";
 import { ContactSection } from "@/components/sections/contact";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { navItems } from "@/lib/content/portfolio-data";
@@ -55,7 +54,6 @@ export default function Home() {
             <HeroSection />
             <ExperienceSection />
             <ProjectsSection />
-            <SkillsSection />
             <ContactSection />
             <SiteFooter />
           </div>

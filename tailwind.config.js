@@ -31,6 +31,7 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        "accent-gold": "hsl(var(--accent-gold))",
       },
       borderRadius: {
         lg: "var(--radius)",

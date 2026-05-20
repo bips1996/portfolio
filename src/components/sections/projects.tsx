@@ -7,7 +7,7 @@ import { BuildRegister } from "./build-register";
 export function ProjectsSection() {
   return (
     <section id="projects" className="section-editorial">
-      <SectionHeading title="Artifacts" />
+      <SectionHeading marker="III" title="Artifacts" />
       <BuildRegister projects={projects} />
     </section>
   );

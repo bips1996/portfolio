@@ -29,18 +29,18 @@ export function BinaryRain() {
 
     const readColor = (viewportWidth: number) => {
       const root = document.documentElement;
-      const ambientB = getComputedStyle(root).getPropertyValue("--ambient-b").trim() || "232 28% 56%";
-      const primary = getComputedStyle(root).getPropertyValue("--primary").trim() || "164 48% 52%";
-      const ambientC = getComputedStyle(root).getPropertyValue("--ambient-c").trim() || "198 34% 50%";
+      const ambientB = getComputedStyle(root).getPropertyValue("--ambient-b").trim() || "222 16% 30%";
+      const primary = getComputedStyle(root).getPropertyValue("--primary").trim() || "215 38% 56%";
+      const ambientC = getComputedStyle(root).getPropertyValue("--ambient-c").trim() || "218 22% 24%";
       const isLight = root.classList.contains("light");
       const isMobile = viewportWidth < 1024;
 
-      const fillAlpha = isMobile ? (isLight ? 0.26 : 0.38) : isLight ? 0.26 : 0.4;
-      const brightAlpha = isMobile ? (isLight ? 0.42 : 0.56) : isLight ? 0.45 : 0.62;
+      const fillAlpha = isMobile ? (isLight ? 0.22 : 0.3) : isLight ? 0.22 : 0.32;
+      const brightAlpha = isMobile ? (isLight ? 0.34 : 0.42) : isLight ? 0.36 : 0.46;
 
       return {
         fill: `hsl(${ambientB} / ${fillAlpha})`,
-        bright: `hsl(${isLight ? primary : ambientC} / ${brightAlpha})`,
+        bright: `hsl(${primary} / ${brightAlpha})`,
         isLight,
         isMobile,
         speedScale: isMobile ? 0.58 : 1,
@@ -50,7 +50,7 @@ export function BinaryRain() {
     let colors = readColor(window.innerWidth);
 
     const initColumns = (w: number, h: number, isMobile: boolean) => {
-      const gap = isMobile ? (w < 400 ? 17 : 19) : w < 480 ? 20 : 18;
+      const gap = isMobile ? (w < 400 ? 20 : 22) : w < 480 ? 24 : 22;
       const count = Math.ceil(w / gap) + 2;
       columns = Array.from({ length: count }, (_, i) => {
         const len = isMobile ? 7 + Math.floor(Math.random() * 10) : 8 + Math.floor(Math.random() * 14);
@@ -124,11 +124,11 @@ export function BinaryRain() {
               distFromTop < fadeInEnd
                 ? 0.28 + (distFromTop / fadeInEnd) * 0.72
                 : Math.max(isMobile ? 0.14 : 0.08, 1 - distFromTop * (isMobile ? 1.05 : 1.1));
-            const tone = isMobile ? 0.92 : colors.isLight ? 0.65 : 1;
+            const tone = isMobile ? 0.9 : colors.isLight ? 0.68 : 1;
             ctx.globalAlpha = alpha * tone;
             ctx.fillStyle = i === 0 ? colors.bright : colors.fill;
             if (!colors.isLight && i === 0) {
-              ctx.shadowBlur = isMobile ? 5 : 6;
+              ctx.shadowBlur = isMobile ? 4 : 5;
               ctx.shadowColor = colors.bright;
             } else {
               ctx.shadowBlur = 0;

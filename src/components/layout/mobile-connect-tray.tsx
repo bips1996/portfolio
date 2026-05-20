@@ -58,7 +58,7 @@ export function MobileConnectTray() {
             className={cn(
               pebbleBase,
               "flex h-10 w-10 items-center justify-center border-border/60 bg-background/55 shadow-[0_6px_20px_-10px_rgba(0,0,0,0.45)]",
-              "hover:border-primary/35 hover:bg-primary/[0.08] hover:shadow-[0_8px_28px_-12px_hsl(var(--primary)/0.35)]",
+              "hover:border-primary/35 hover:bg-primary/[0.08] hover:shadow-[0_8px_28px_-12px_hsl(var(--primary)/0.18)]",
             )}
           >
             <IconGitHub className="h-[15px] w-[15px] text-foreground/80" />
@@ -88,7 +88,7 @@ export function MobileConnectTray() {
             className={cn(
               pebbleBase,
               "flex h-12 w-12 items-center justify-center border-primary/40 bg-gradient-to-b from-primary/[0.18] to-primary/[0.06]",
-              "shadow-[0_0_32px_-10px_hsl(var(--primary)/0.55),0_10px_28px_-16px_rgba(0,0,0,0.5)]",
+              "shadow-[0_0_32px_-10px_hsl(var(--primary)/0.24),0_10px_28px_-16px_rgba(0,0,0,0.5)]",
               "hover:border-primary/55 hover:from-primary/[0.24] hover:to-primary/[0.1]",
             )}
           >

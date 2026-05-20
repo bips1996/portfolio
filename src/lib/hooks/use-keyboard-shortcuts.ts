@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { navItems } from "@/lib/content/portfolio-data";
 
 interface ShortcutConfig {
   onCommandPalette: () => void;
@@ -19,12 +20,13 @@ export function useKeyboardShortcuts({
         return;
       }
 
-      if (event.altKey && /^[1-5]$/.test(event.key)) {
-        event.preventDefault();
-        const sections = ["hero", "experience", "projects", "skills", "contact"];
+      if (event.altKey && /^[1-9]$/.test(event.key)) {
         const index = Number(event.key) - 1;
-        const target = sections[index];
-        if (target) onNavigate(target);
+        const target = navItems[index]?.id;
+        if (target) {
+          event.preventDefault();
+          onNavigate(target);
+        }
       }
     };
 
