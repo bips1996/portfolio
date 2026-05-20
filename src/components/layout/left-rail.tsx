@@ -18,10 +18,10 @@ const NAV_INDEX = ["I", "II", "III", "IV", "V"] as const;
 export function LeftRail({ activeSection, onNavigate }: LeftRailProps) {
   return (
     <aside className="surface-rail hidden lg:sticky lg:top-0 lg:flex lg:h-screen lg:min-h-0 lg:w-[268px] lg:shrink-0 lg:flex-col lg:border-r lg:border-border lg:py-11 lg:pr-8">
-      <div className="flex min-h-0 flex-1 flex-col px-0.5">
+      <div className="flex min-h-0 flex-1 flex-col overflow-hidden px-0.5">
         <a
           href="#hero"
-          className="hover-brand-card group block rounded-2xl border border-border/70 bg-muted/[0.18] p-4 transition-colors duration-300 hover:border-primary/35 hover:bg-muted/30"
+          className="hover-brand-card group block rounded-2xl border border-border/70 bg-muted/[0.18] p-4 transition-colors duration-300 hover:border-primary/45 hover:bg-primary/[0.08] hover:shadow-[0_12px_32px_-16px_hsl(var(--primary)/0.22)]"
           onClick={(e) => {
             e.preventDefault();
             onNavigate("hero");
@@ -51,7 +51,7 @@ export function LeftRail({ activeSection, onNavigate }: LeftRailProps) {
 
         <p className="mt-10 font-mono text-[9px] uppercase tracking-[0.2em] text-muted-foreground/80">Contents</p>
         <nav
-          className="mt-3 min-h-0 flex-1 space-y-0.5 overflow-y-auto overscroll-contain pr-1"
+          className="mt-3 min-h-0 flex-1 space-y-0.5 overflow-y-auto overscroll-contain pr-1 [scrollbar-width:thin]"
           aria-label="Section navigation"
         >
           {navItems.map((item, idx) => {
@@ -73,7 +73,7 @@ export function LeftRail({ activeSection, onNavigate }: LeftRailProps) {
                 <span
                   className={cn(
                     "nav-rail-marker w-5 shrink-0 text-right font-mono text-[9px] tabular-nums tracking-[0.1em] transition-all duration-200",
-                    isActive ? "text-primary" : "text-muted-foreground/65",
+                    isActive ? "" : "text-muted-foreground/65",
                   )}
                   aria-hidden
                 >
@@ -81,10 +81,8 @@ export function LeftRail({ activeSection, onNavigate }: LeftRailProps) {
                 </span>
                 <span
                   className={cn(
-                    "absolute left-0 top-1/2 h-6 w-[3px] -translate-y-1/2 rounded-full transition-all duration-200",
-                    isActive
-                      ? "bg-primary shadow-[0_0_14px_hsl(var(--primary)/0.4)]"
-                      : "bg-transparent group-hover/nav:bg-primary/20",
+                    "nav-rail-active-line absolute left-0 top-1/2 h-6 w-[3px] -translate-y-1/2 rounded-full transition-all duration-200",
+                    isActive ? "folio-gold-active-line" : "bg-transparent",
                   )}
                   aria-hidden
                 />

@@ -59,7 +59,7 @@ export function MobileFolioChrome({ activeSection, onNavigate }: MobileFolioChro
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -4 }}
                 transition={{ duration: 0.18 }}
-                className="shrink-0 font-mono text-[10px] tabular-nums tracking-[0.12em] text-primary"
+                className="shrink-0 font-mono text-[10px] tabular-nums tracking-[0.12em] text-accent-gold/85"
               >
                 {marker}
               </motion.span>
@@ -102,9 +102,9 @@ export function MobileFolioChrome({ activeSection, onNavigate }: MobileFolioChro
               >
                 <span
                   className={cn(
-                    "font-mono text-[8px] tabular-nums tracking-[0.08em] transition-colors duration-300",
+                    "folio-chrome-numeral font-mono text-[8px] tabular-nums tracking-[0.08em] transition-colors duration-300",
                     isActive
-                      ? "text-primary"
+                      ? "text-accent-gold/88"
                       : "text-muted-foreground/45 group-hover/chapter:text-muted-foreground/80",
                   )}
                 >
@@ -112,10 +112,8 @@ export function MobileFolioChrome({ activeSection, onNavigate }: MobileFolioChro
                 </span>
                 <span
                   className={cn(
-                    "block h-[3px] w-full max-w-[2.75rem] rounded-full transition-all duration-300",
-                    isActive
-                      ? "bg-primary shadow-[0_0_12px_hsl(var(--primary)/0.55)]"
-                      : "bg-border/55 group-hover/chapter:bg-primary/25",
+                    "folio-chrome-seg block h-[3px] w-full max-w-[2.75rem] rounded-full transition-all duration-300",
+                    isActive ? "folio-gold-active-line" : "bg-border/55",
                   )}
                   aria-hidden
                 />

@@ -10,6 +10,7 @@ export function ExperienceSection() {
   return (
     <section id="experience" className="section-editorial">
       <SectionHeading
+        marker="II"
         title="Field notes"
         subtitle="Chronicle of tenure—systems exercised where latency and ownership are non-negotiable."
       />
@@ -38,7 +39,7 @@ export function ExperienceSection() {
               {/* Node */}
               <div className="relative z-[1] mt-1.5 flex w-4 shrink-0 justify-center sm:w-5">
                 <span
-                  className="experience-node h-2 w-2 rounded-full border-2 border-[hsl(var(--background))] bg-primary shadow-[0_0_10px_hsl(var(--primary)_/_0.35)] ring-1 ring-primary/30 transition-all duration-300"
+                  className="experience-node h-2 w-2 rounded-full border-2 border-[hsl(var(--background))] bg-primary shadow-[0_0_8px_hsl(var(--primary)_/_0.2)] ring-1 ring-primary/25 transition-all duration-300"
                   aria-hidden
                 />
               </div>

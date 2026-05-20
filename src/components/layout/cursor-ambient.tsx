@@ -94,14 +94,14 @@ export function CursorAmbient() {
         className="pointer-events-none fixed left-0 top-0 z-[1] h-[min(85vw,720px)] w-[min(85vw,720px)] rounded-full opacity-0 transition-opacity duration-500"
         style={{
           background:
-            "radial-gradient(circle at center, hsl(var(--primary) / 0.11) 0%, hsl(var(--ambient-b) / 0.05) 38%, transparent 68%)",
+            "radial-gradient(circle at center, hsl(var(--primary) / 0.06) 0%, hsl(var(--ambient-b) / 0.04) 38%, transparent 68%)",
           willChange: "transform",
         }}
         aria-hidden
       />
       <div
         ref={ringRef}
-        className="pointer-events-none fixed left-0 top-0 z-[1] h-9 w-9 rounded-full border border-primary/25 opacity-0 shadow-[0_0_24px_hsl(var(--primary)/0.12)]"
+        className="cursor-ambient-ring pointer-events-none fixed left-0 top-0 z-[1] h-9 w-9 rounded-full border opacity-0"
         style={{ willChange: "transform" }}
         aria-hidden
       />

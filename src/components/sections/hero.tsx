@@ -17,17 +17,26 @@ export function HeroSection() {
   return (
     <section id="hero" className="scroll-mt-28 pb-6 sm:scroll-mt-32 sm:pb-8">
       <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-40px" }}
-          className="hero-surface relative overflow-hidden px-5 py-8 sm:px-9 sm:py-11"
-        >
-          <HeroAccent />
-          <span className="pointer-events-none absolute left-4 top-4 h-3.5 w-3.5 border-l border-t border-primary/30 sm:left-5 sm:top-5" aria-hidden />
-          <span className="pointer-events-none absolute right-4 top-4 h-3.5 w-3.5 border-r border-t border-primary/30 sm:right-5 sm:top-5" aria-hidden />
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-40px" }}
+        className="hero-surface relative overflow-hidden px-5 py-8 sm:px-9 sm:py-11"
+      >
+        <HeroAccent />
+        <span
+          className="pointer-events-none absolute left-4 top-4 h-3.5 w-3.5 border-l border-t border-primary/30 sm:left-5 sm:top-5"
+          aria-hidden
+        />
+        <span
+          className="pointer-events-none absolute right-4 top-4 h-3.5 w-3.5 border-r border-t border-primary/30 sm:right-5 sm:top-5"
+          aria-hidden
+        />
 
-        <div className="flex flex-col gap-8 border-b border-border/70 pb-7 sm:flex-row sm:items-center sm:justify-between sm:gap-10">
+        <motion.div
+          variants={fadeUp}
+          className="flex flex-col gap-8 border-b border-border/70 pb-7 sm:flex-row sm:items-center sm:justify-between sm:gap-10"
+        >
           <div className="flex min-w-0 items-center gap-4 sm:gap-5">
             <div className="relative h-[3.25rem] w-[3.25rem] shrink-0 sm:h-14 sm:w-14">
               <Image
@@ -40,7 +49,9 @@ export function HeroSection() {
               />
             </div>
             <div className="min-w-0 border-l border-border/60 pl-4 sm:pl-5">
-              <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-primary/90">{folioMeta.plate}</p>
+              <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-accent-gold/80">
+                {folioMeta.plate}
+              </p>
               <p className="mt-2 max-w-[20rem] font-mono text-[10px] leading-relaxed tracking-[0.06em] text-muted-foreground">
                 {folioMeta.focus}
               </p>
@@ -65,7 +76,7 @@ export function HeroSection() {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         <motion.div
           variants={fadeUp}
@@ -84,12 +95,15 @@ export function HeroSection() {
 
         <motion.h1
           variants={fadeUp}
-          className="font-display mt-9 max-w-[36rem] text-[1.85rem] font-medium leading-[1.14] tracking-tight text-foreground sm:mt-11 sm:text-[2.25rem] sm:leading-[1.1]"
+          className="font-display mt-9 max-w-[36rem] text-[1.85rem] font-medium leading-[1.12] tracking-tight text-foreground sm:mt-11 sm:text-[2.25rem] sm:leading-[1.1]"
         >
           {heroStatement}
         </motion.h1>
 
-        <motion.div variants={fadeUp} className="mt-10 space-y-5 border-l-2 border-primary/25 pl-5 sm:mt-12 sm:space-y-6 sm:pl-6">
+        <motion.div
+          variants={fadeUp}
+          className="mt-10 space-y-5 border-l-2 border-primary/25 pl-5 sm:mt-12 sm:space-y-6 sm:pl-6"
+        >
           {editorialIntro.observations.map((line, i) => (
             <p
               key={line}
@@ -107,7 +121,9 @@ export function HeroSection() {
           variants={fadeUp}
           className="mt-10 flex flex-col gap-3 border-t border-border/70 pt-8 sm:mt-11 sm:flex-row sm:flex-wrap sm:items-center sm:gap-2"
         >
-          <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground sm:mr-1">References</span>
+          <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground sm:mr-1">
+            References
+          </span>
           <div className="flex flex-wrap gap-2">
             <a href={socialLinks.resume} className="folio-action-chip font-mono" target="_blank" rel="noreferrer">
               Résumé

@@ -38,10 +38,17 @@ export interface SkillCategory {
 
 export const socialLinks = {
   email: "mailto:samantaraybiplaba@gmail.com",
+  phone: "tel:+918637212213",
   github: "https://github.com/bips1996",
   linkedin: "https://www.linkedin.com/in/bips96/",
   resume: "https://drive.google.com/file/d/12Oio-7HGZuMarqoA30lOiYIMuYN4hjCY/view?usp=drive_link",
 };
+
+/** Indian mobile — display + clipboard copy */
+export const contactPhone = {
+  e164: "+918637212213",
+  display: "+91 86372 12213",
+} as const;
 
 /** Logo + portrait — vendored under `public/images/` (copied from your previous site) */
 export const brandMedia = {
@@ -58,7 +65,7 @@ export const navItems: { id: NavSection; label: string }[] = [
   { id: "hero", label: "Prologue" },
   { id: "experience", label: "Field notes" },
   { id: "projects", label: "Artifacts" },
-  { id: "skills", label: "Instruments" },
+  /* { id: "skills", label: "Instruments" }, — hidden for now */
   { id: "contact", label: "Correspondence" },
 ];
 
